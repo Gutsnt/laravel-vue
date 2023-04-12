@@ -51,7 +51,11 @@ class ProductoController extends Controller
         $producto->referencia = $request->referencia;
         $producto->precio = $request->precio;
         $producto->save();
-        return new ProductoResource($producto);
+        
+        return response()->json([
+            'producto' => ($producto),
+            'message' => 'Productos actualizado',
+        ], 200);
     }
 
     public function destroy($id)

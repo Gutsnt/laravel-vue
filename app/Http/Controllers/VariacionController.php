@@ -39,7 +39,7 @@ class VariacionController extends Controller
         $variacion->referencia = $request->referencia;
         $variacion->descripcion = $request->descripcion;
         $variacion->precio = $request->precio;
-        $variacion->producto_id = 1;
+        $variacion->producto_id = $request->producto['id'];
         $variacion->save();
 
         return response()->json([

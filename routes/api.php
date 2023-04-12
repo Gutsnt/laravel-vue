@@ -22,5 +22,9 @@ Route::get('/productos', [App\Http\Controllers\ProductoController::class, 'index
 
 Route::post('/productos/create', [App\Http\Controllers\ProductoController::class, 'store'])->name('store');
 
+Route::delete('/productos/{id}', [App\Http\Controllers\ProductoController::class, 'destroy'])->name('destroy');
+
+Route::put('/productos/{id}', [App\Http\Controllers\ProductoController::class, 'update'])->name('update');
+
 Route::post('/variaciones/create', [App\Http\Controllers\VariacionController::class, 'store'])->name('store');
 
