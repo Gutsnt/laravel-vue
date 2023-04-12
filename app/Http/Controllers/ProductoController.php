@@ -12,10 +12,9 @@ class ProductoController extends Controller
     // Obtener todos los productos
     public function index()
     {
-        $productos = Producto::all();
-        
+        $productos = Producto::with('variaciones')->get();
         return response()->json([
-            'productos' => ProductoResource::collection($productos),
+            'productos' => $productos,
             'message' => 'Productos obtenidos correctamente',
         ], 200);
     }
