@@ -20,3 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/productos', [App\Http\Controllers\ProductoController::class, 'index'])->name('index');
 
+Route::post('/productos/create', [App\Http\Controllers\ProductoController::class, 'store'])->name('store');
+
+Route::post('/variaciones/create', [App\Http\Controllers\VariacionController::class, 'store'])->name('store');
+

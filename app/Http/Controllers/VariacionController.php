@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Variacion;
 use Illuminate\Http\Request;
 
 class VariacionController extends Controller
@@ -34,7 +35,17 @@ class VariacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $variacion = new Variacion();
+        $variacion->referencia = $request->referencia;
+        $variacion->descripcion = $request->descripcion;
+        $variacion->precio = $request->precio;
+        $variacion->producto_id = 1;
+        $variacion->save();
+
+        return response()->json([
+            'producto' => ($variacion),
+            'message' => 'Productos obtenidos correctamente',
+        ], 200);
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductoRequest;
 use App\Http\Resources\ProductoResource;
 use App\Models\Producto;
+use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
@@ -20,15 +21,19 @@ class ProductoController extends Controller
     }
 
     // Crear un nuevo producto
-    public function store(ProductoRequest $request)
+    public function store(Request $request)
     {
         $producto = new Producto;
-        $producto->nombre = $request->nombre;
+        $producto->nombre = $request->name;
         $producto->descripcion = $request->descripcion;
         $producto->referencia = $request->referencia;
         $producto->precio = $request->precio;
         $producto->save();
-        return new ProductoResource($producto);
+
+        return response()->json([
+            'producto' => ($producto),
+            'message' => 'Productos obtenidos correctamente',
+        ], 200);
     }
 
     // Obtener un producto por su ID
